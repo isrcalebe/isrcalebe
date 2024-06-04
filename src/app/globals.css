@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 2, 6, 23;
+  --background-rgb: 248, 250, 252;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 203, 213, 225;
+    --background-rgb: 2, 6, 23;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@media(min-width: 32rem) {
+  .container {
+    max-width: 32rem;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
