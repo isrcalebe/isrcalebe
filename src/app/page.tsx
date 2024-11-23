@@ -3,22 +3,15 @@ import Link from "next/link"
 const links = [
   { label: 'isrcalebe', href: '/' },
   { label: 'github', href: 'https://github.com/isrcalebe' },
-  { label: 'x', href: 'https://x.com/isrcalebe' }
 ]
 
 const projects = [
   {
-    label: 'frutti!',
-    description: 'simple multiplayer game written in C#',
-    status: 'wip',
-    href: 'https://github.com/isrcalebe/frutti'
+    label: 'forgekit',
+    description: 'clean templates for .net and osu!framework, providing solid boilerplate with a clean project structure 💪',
+    status: 'stable',
+    href: 'https://github.com/isrcalebe/forgekit'
   },
-  {
-    label: 'miniblocks',
-    description: 'simple minecraft clone written in C#',
-    status: 'wip',
-    href: 'https://github.com/isrcalebe/miniblocks'
-  }
 ]
 
 export default function Home() {
