@@ -6,6 +6,8 @@ import {
 } from '@/components/repository'
 import { ListFeaturedRepositories } from '@/queries/ListFeaturedRepositories'
 
+export const revalidate = 10
+
 export default async function Home() {
   const repositories = await ListFeaturedRepositories()
 
