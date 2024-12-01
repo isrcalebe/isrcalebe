@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .font-stretch-100 {
+    font-stretch: 100%;
+  }
+
+  .font-stretch-125 {
+    font-stretch: 125%;
+  }
+}
+
+:root {
+  --foreground-rgb: rgb(15 23 42);
+  --background-rgb: rgb(241 245 249);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: rgb(241 245 249);
+    --background-rgb: rgb(15 23 42);
+  }
+}
+
+body {
+  color: var(--foreground-rgb);
+  background: var(--background-rgb);
+  font-family: var(--font-monaspace-krypton), monospace;
+}
+
+@media (min-width: 36rem) {
+  .container {
+    max-width: 36rem;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
