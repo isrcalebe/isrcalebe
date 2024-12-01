@@ -14,7 +14,14 @@ export async function AsyncHeader() {
       </Header>
     )
 
-  const { name, url, socialAccounts } = response
+  if (!response.data)
+    return (
+      <Header className="py-8">
+        <HeaderItemLink href="/">isrcalebe</HeaderItemLink>
+      </Header>
+    )
+
+  const { name, url, socialAccounts } = response.data
 
   return (
     <Header className="py-8">

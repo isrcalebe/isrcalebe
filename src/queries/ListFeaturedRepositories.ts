@@ -1,4 +1,5 @@
 import { octokit } from '@/providers/octokit'
+import { QueryResponse } from './QueryResponse'
 
 type FeaturedRepository = {
   name: string
@@ -7,7 +8,9 @@ type FeaturedRepository = {
   language?: string
 }
 
-export async function ListFeaturedRepositories() {
+type ListFeaturedRepositoriesResponse = QueryResponse<FeaturedRepository[]>
+
+export async function ListFeaturedRepositories(): Promise<ListFeaturedRepositoriesResponse> {
   try {
     const response = await octokit.request('GET /user/repos')
 
@@ -35,8 +38,13 @@ export async function ListFeaturedRepositories() {
         return langA.localeCompare(langB)
       })
 
-    return featuredRepositories
+    return {
+      success: true,
+      data: featuredRepositories,
+    }
   } catch {
-    return null
+    return {
+      success: false,
+    }
   }
 }

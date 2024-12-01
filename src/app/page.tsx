@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <main className="flex-1">
-      <div className="container flex flex-col space-2-y">
+      <div className="container flex flex-col space-y-2">
         <article>
           <div className="space-y-1">
             <h2 className="font-monaspace-krypton text-lg tracking-wide font-stretch-125 select-none">
@@ -19,19 +19,27 @@ export default async function Home() {
             </h2>
           </div>
           <RepositoryGroup>
-            {repositories ? (
-              repositories.map((repository, index) => {
-                return (
-                  <RepositoryItem key={index}>
-                    <RepositoryItemLink
-                      name={repository.name}
-                      href={repository.url}
-                      language={repository.language}
-                    />
-                    {repository.description}
-                  </RepositoryItem>
-                )
-              })
+            {repositories.success ? (
+              repositories.data && repositories.data.length > 0 ? (
+                repositories.data.map((repository, index) => {
+                  return (
+                    <RepositoryItem key={index}>
+                      <RepositoryItemLink
+                        name={repository.name}
+                        href={repository.url}
+                        language={repository.language}
+                      />
+                      {repository.description}
+                    </RepositoryItem>
+                  )
+                })
+              ) : (
+                <RepositoryItem>
+                  <p className="text-gray-500 select-none">
+                    no featured projects
+                  </p>
+                </RepositoryItem>
+              )
             ) : (
               <>
                 <RepositoryItemSkeleton />

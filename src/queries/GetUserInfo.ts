@@ -1,4 +1,5 @@
 import { octokit } from '@/providers/octokit'
+import { QueryResponse } from '@/queries/QueryResponse'
 
 type UserInfo = {
   name: string
@@ -11,7 +12,9 @@ type SocialAccount = {
   url: string
 }
 
-export async function GetUserInfo(): Promise<UserInfo> {
+type GetUserInfoResponse = QueryResponse<UserInfo>
+
+export async function GetUserInfo(): Promise<GetUserInfoResponse> {
   try {
     const userResponse = await octokit.request('GET /user')
     const socialResponse = await octokit.request('GET /user/social_accounts')
@@ -28,11 +31,16 @@ export async function GetUserInfo(): Promise<UserInfo> {
     )
 
     return {
-      name: login,
-      url: html_url,
-      socialAccounts,
+      success: true,
+      data: {
+        name: login,
+        url: html_url,
+        socialAccounts,
+      },
     }
   } catch {
-    return null
+    return {
+      success: false,
+    }
   }
 }
